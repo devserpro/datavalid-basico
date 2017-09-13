@@ -1,0 +1,651 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "version":"vbeta1",
+	"title":"datavalid-basico",
+	"description":"O serviço `DataValid` é disponibilizado através do  `HTTP REST` oferecendo operações que permitem as aplicações realizar validações em dados de Pessoas Fisicas e Pessoas Juridicas.\n\n## Códigos de Retorno\n\n| Código de retorno | Resumido | Explicação |\n| ------------- |:--------------------|:-----------------------------------------------------------------------------|\n| 200           | OK                  | Tudo funcionou como esperado e a validação dos dados foi realizada com sucesso.                                               |\n| 400           | Requisição inválida | A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição. Confira se as propriedade do JSON da requisição estão de acordo com a propriedade esperadas pelos serviço. |\n| 401           | Não autorizado      | Problemas durante a autenticação.        |\n| 422           | Validação não processada   | A validação não pode ser processada por alguma inconsistência na requisição.              |\n| 500           | Erro no servidor    | Ocorreu algum erro interno.      |\n| 503           |Serviço Indisponível     |  Algum serviço integrado ao DataValid está indisponível no momento.                         |\n\n\n\n \n\n## Tipos de Campos Retornados\n\n| Tipos de campos | Valor de retorno |\n| ---------------------- | :------------------------------------------------------------- |\n| campo de validação        | <code>false</code> se o dado for invalido e <code>true</code> se for válido                   |\n| campo de similaridade     | Valor de 0 a 1 que indica o percentual de similaridade entre dado a ser validado e o dado verdadeiro referente a chave enviada.                 |\n| campos do objeto <code>\"informacoes_adicionais\"</code>   | Informações sobre o <code>key</code> da validação, que não foram explicitamente requisitadas.|\n\n --------------------------"},
+  "schemes":
+    ["https","http"],
+	"basePath":"/datavalid/basico/vbeta1",
+	"paths": {
+		"/validate/pf": {
+				"post": {
+						"consumes": [
+								"application/json"
+						],
+						"produces": [
+								"application/json"
+						],
+						"parameters": [
+								{
+										"in": "body",
+										"name": "payload",
+										"description": "Serviço que valida dados cadastrais de uma Pessoa Física, onde key é o número do CPF.",
+										"required": true,
+										"schema": {
+												"$ref": "#/definitions/ValidateInputBasicoPF"
+										}
+								}
+						],
+						"responses": {
+								"200": {
+										"description": "Retorna validação de dados cadastrais de Pessoa Jurídica",
+										"schema": {
+												"$ref": "#/definitions/ValidateResultBasicoPF"
+										}
+								},
+								"422": {
+										"description": "A validação não pode ser processada por alguma inconsistência na requisição. As propriedades invalidas são listadas na resposta.",
+										"schema": {
+												"$ref": "#/definitions/UnprocessableEntity"
+										}
+								}
+						},
+						"x-auth-type": "Application & Application User",
+						"x-throttling-tier": "Unlimited"
+				}
+		},
+		"/validate/pj": {
+				"post": {
+						"consumes": [
+								"application/json"
+						],
+						"produces": [
+								"application/json"
+						],
+						"parameters": [
+								{
+										"in": "body",
+										"name": "payload",
+										"description": "Serviço que valida dados cadastrais de uma Pessoa Jurídica, onde key é o número do CNPJ.",
+										"required": true,
+										"schema": {
+												"$ref": "#/definitions/ValidateInputPJ"
+										}
+								}
+						],
+						"responses": {
+								"200": {
+										"description": "Retorna validação de dados cadastrais de Pessoa Jurídica",
+										"schema": {
+												"$ref": "#/definitions/ValidateResultPJ"
+										}
+								},
+								"422": {
+										"description": "A validação não pode ser processada por alguma inconsistência na requisição. As propriedades invalidas são listadas na resposta.",
+										"schema": {
+												"$ref": "#/definitions/UnprocessableEntity"
+										}
+								}
+						},
+						"x-auth-type": "Application & Application User",
+						"x-throttling-tier": "Unlimited"
+				}
+		},
+		"/status/validate": {
+				"get": {
+						"responses": {
+								"204": {
+										"description": "Status OK"
+								}
+						},
+						"x-auth-type": "Application & Application User",
+						"x-throttling-tier": "Unlimited"
+				}
+		}
+},
+"definitions": {
+		"KeyPF": {
+				"type": "object",
+				"properties": {
+						"cpf": {
+								"type": "string"
+						}
+				}
+		},
+		"ValidateInputPJ": {
+				"type": "object",
+				"properties": {
+						"key": {
+								"$ref": "#/definitions/KeyPJ"
+						},
+						"answer": {
+								"$ref": "#/definitions/AnswerPJ"
+						}
+				}
+		},
+		"KeyPJ": {
+				"type": "object",
+				"properties": {
+						"cnpj": {
+								"type": "string"
+						}
+				}
+		},
+		"AnswerPJ": {
+				"type": "object",
+				"properties": {
+						"razao_social": {
+								"type": "string"
+						},
+						"nome_fantasia": {
+								"type": "string"
+						},
+						"data_abertura": {
+								"type": "string",
+								"format": "yyyy-mm-dd"
+						},
+						"cnae_principal": {
+								"$ref": "#/definitions/AnswerPJProperty"
+						},
+						"natureza_juridica": {
+								"$ref": "#/definitions/AnswerPJProperty"
+						},
+						"endereco": {
+								"$ref": "#/definitions/AnswerPJEndereco"
+						},
+						"situacao_especial": {
+								"type": "string"
+						},
+						"situacao_cadastral": {
+								"$ref": "#/definitions/AnswerPJSituacaoCadastral"
+						},
+						"nome_orgao": {
+								"type": "string"
+						},
+						"ente_federativo": {
+								"type": "string"
+						},
+						"correio_eletronico": {
+								"type": "string"
+						},
+						"capital_social": {
+								"type": "number",
+								"format": "double"
+						},
+						"porte": {
+								"type": "string",
+								"enum": [
+										"00",
+										"01",
+										"03",
+										"05"
+								]
+						},
+						"telefone": {
+								"$ref": "#/definitions/AnswerPJTelefone"
+						}
+				}
+		},
+		"AnswerPJProperty": {
+				"type": "object",
+				"properties": {
+						"codigo": {
+								"type": "string"
+						},
+						"descricao": {
+								"type": "string"
+						}
+				}
+		},
+		"AnswerPJEndereco": {
+				"type": "object",
+				"properties": {
+						"logradouro": {
+								"type": "string"
+						},
+						"numero": {
+								"type": "string"
+						},
+						"complemento": {
+								"type": "string"
+						},
+						"bairro": {
+								"type": "string"
+						},
+						"cep": {
+								"type": "string"
+						},
+						"municipio": {
+								"type": "string"
+						},
+						"uf": {
+								"type": "string"
+						}
+				}
+		},
+		"AnswerPJSituacaoCadastral": {
+				"type": "object",
+				"properties": {
+						"codigo": {
+								"description": "2 - Ativo / 3 - suspensa / 4 - inapta / 8 - baixada",
+								"type": "integer",
+								"enum": [
+										2,
+										3,
+										4,
+										8
+								]
+						},
+						"data": {
+								"type": "string",
+								"format": "yyyy-mm-dd"
+						},
+						"motivo": {
+								"type": "string"
+						}
+				}
+		},
+		"AnswerPJTelefone": {
+				"type": "object",
+				"properties": {
+						"ddd": {
+								"type": "string"
+						},
+						"numero": {
+								"type": "string"
+						}
+				}
+		},
+		"ValidateResultPJ": {
+				"type": "object",
+				"properties": {
+						"razao_social": {
+								"type": "boolean"
+						},
+						"razao_social_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"nome_fantasia": {
+								"type": "boolean"
+						},
+						"nome_fantasia_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"data_abertura": {
+								"type": "boolean"
+						},
+						"cnae_principal": {
+								"$ref": "#/definitions/ResultPJProperty"
+						},
+						"natureza_juridica": {
+								"$ref": "#/definitions/ResultPJProperty"
+						},
+						"endereco": {
+								"$ref": "#/definitions/ResultPJEndereco"
+						},
+						"situacao_especial": {
+								"type": "boolean"
+						},
+						"situacao_especial_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"situacao_cadastral": {
+								"$ref": "#/definitions/ResultPJSituacaoCadastral"
+						},
+						"nome_orgao": {
+								"type": "boolean"
+						},
+						"nome_orgao_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"ente_federativo": {
+								"type": "boolean"
+						},
+						"ente_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"correio_eletronico": {
+								"type": "boolean"
+						},
+						"correio_eletronico_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"capital_social": {
+								"type": "boolean"
+						},
+						"porte": {
+								"type": "boolean"
+						},
+						"telefone": {
+								"$ref": "#/definitions/ResultPJTelefone"
+						}
+				}
+		},
+		"ResultPJProperty": {
+				"type": "object",
+				"properties": {
+						"codigo": {
+								"type": "boolean"
+						},
+						"descricao": {
+								"type": "boolean"
+						},
+						"descricao_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						}
+				}
+		},
+		"ResultPJEndereco": {
+				"type": "object",
+				"properties": {
+						"logradouro": {
+								"type": "boolean"
+						},
+						"logradoura_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"numero": {
+								"type": "boolean"
+						},
+						"numero_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"complemento": {
+								"type": "boolean"
+						},
+						"complemento_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"bairro": {
+								"type": "boolean"
+						},
+						"bairro_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"cep": {
+								"type": "boolean"
+						},
+						"municipio": {
+								"type": "boolean"
+						},
+						"municipio_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"uf": {
+								"type": "boolean"
+						},
+						"uf__similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						}
+				}
+		},
+		"ResultPJSituacaoCadastral": {
+				"type": "object",
+				"properties": {
+						"codigo": {
+								"type": "boolean"
+						},
+						"data": {
+								"type": "boolean"
+						},
+						"motivo": {
+								"type": "boolean"
+						},
+						"motivo_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						}
+				}
+		},
+		"ResultPJTelefone": {
+				"type": "object",
+				"properties": {
+						"ddd": {
+								"type": "boolean"
+						},
+						"numero": {
+								"type": "boolean"
+						}
+				}
+		},
+		"ValidateInputBasicoPF": {
+				"type": "object",
+				"properties": {
+						"key": {
+								"$ref": "#/definitions/KeyPF"
+						},
+						"answer": {
+								"$ref": "#/definitions/AnswerBasicoPF"
+						}
+				}
+		},
+		"AnswerBasicoPF": {
+				"type": "object",
+				"properties": {
+						"nome": {
+								"type": "string"
+						},
+						"sexo": {
+								"type": "string",
+								"enum": [
+										"F",
+										"M"
+								]
+						},
+						"data_nascimento": {
+								"type": "string",
+								"format": "yyyy-mm-dd"
+						},
+						"filiacao": {
+								"$ref": "#/definitions/AnswerBasicoFiliacapPF"
+						},
+						"nacionalidade": {
+								"description": "1 – Brasileiro / 2 – Brasileiro naturalizado / 3 – Estrangeiro / 4 – Brasileiro Nascido no Exterior",
+								"type": "integer",
+								"enum": [
+										1,
+										2,
+										3,
+										4
+								]
+						},
+						"documento": {
+								"$ref": "#/definitions/AnswerBasicoDocumentoPF"
+						},
+						"cnh": {
+								"$ref": "#/definitions/AnswerBasicoCNHPF"
+						}
+				}
+		},
+		"AnswerBasicoFiliacapPF": {
+				"type": "object",
+				"properties": {
+						"nome_mae": {
+								"type": "string"
+						},
+						"nome_pai": {
+								"type": "string"
+						}
+				}
+		},
+		"AnswerBasicoDocumentoPF": {
+				"type": "object",
+				"properties": {
+						"tipo": {
+								"description": "1 – Carteira de identidade / 2 – Carteira profissional / 3 – Passaporte / 4 – Carteira de reservista",
+								"type": "integer",
+								"enum": [
+										1,
+										2,
+										3,
+										4
+								]
+						},
+						"numero": {
+								"type": "string"
+						},
+						"orgao_expedidor": {
+								"type": "string"
+						},
+						"uf_expedidor": {
+								"type": "string"
+						}
+				}
+		},
+		"AnswerBasicoCNHPF": {
+				"type": "object",
+				"properties": {
+						"numero_registro": {
+								"type": "string"
+						},
+						"categoria": {
+								"type": "string"
+						},
+						"data_primeira_habilitacao": {
+								"type": "string",
+								"format": "yyyy-mm-dd"
+						},
+						"data_validade": {
+								"type": "string",
+								"format": "yyyy-mm-dd"
+						}
+				}
+		},
+		"ValidateResultBasicoPF": {
+				"type": "object",
+				"properties": {
+						"nome": {
+								"type": "boolean"
+						},
+						"nome_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"sexo": {
+								"type": "boolean"
+						},
+						"data_nascimento": {
+								"type": "boolean"
+						},
+						"filiacao": {
+								"$ref": "#/definitions/ResultBasicoFilicaoPF"
+						},
+						"nacionalidade": {
+								"type": "boolean"
+						},
+						"documento": {
+								"$ref": "#/definitions/ResultBasicoDocumentoPF"
+						},
+						"cnh": {
+								"$ref": "#/definitions/ResultBasicoCNHPF"
+						},
+						"informacoes_adicionais": {
+								"type": "object",
+								"properties": {
+										"cpf_regular": {
+												"type": "boolean"
+										}
+								}
+						}
+				}
+		},
+		"ResultBasicoFilicaoPF": {
+				"type": "object",
+				"properties": {
+						"nome_mae": {
+								"type": "boolean"
+						},
+						"nome_mae_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						},
+						"nome_pai": {
+								"type": "boolean"
+						},
+						"nome_pai_similaridade": {
+								"description": "Percentual de similaridade",
+								"type": "number",
+								"format": "double"
+						}
+				}
+		},
+		"ResultBasicoDocumentoPF": {
+				"type": "object",
+				"properties": {
+						"tipo": {
+								"type": "boolean"
+						},
+						"numero": {
+								"type": "boolean"
+						},
+						"orgao_expedidor": {
+								"type": "boolean"
+						},
+						"uf_expedidor": {
+								"type": "boolean"
+						}
+				}
+		},
+		"ResultBasicoCNHPF": {
+				"type": "object",
+				"properties": {
+						"numero_registro": {
+								"type": "boolean"
+						},
+						"categoria": {
+								"type": "boolean"
+						},
+						"data_primeira_habilitacao": {
+								"type": "boolean"
+						},
+						"data_validade": {
+								"type": "boolean"
+						}
+				}
+		},
+		"UnprocessableEntity": {
+				"type": "array",
+				"items": {
+						"type": "object",
+						"properties": {
+								"property": {
+										"description": "Parâmetro que ocasionou o erro.",
+										"type": "string"
+								},
+								"message": {
+										"description": "Mensagem de erro",
+										"type": "string"
+								}
+						}
+				}
+		}
+},
+"host":"apigateway.serpro.gov.br",
+"security":[{"Bearer": []}],
+"securityDefinitions":{
+      "Bearer" : {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header" }
+    }
+}
