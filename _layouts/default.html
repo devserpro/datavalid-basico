@@ -173,7 +173,7 @@
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-103528864-6', 'auto');
+        ga('create', 'UA-103528864-7', 'auto');
         ga('send', 'pageview');
     </script>
 	
@@ -194,9 +194,9 @@
 		var exec;
 		if (amb == 1) {
 			exec = "curl -X POST --header \"Accept: application/json\" --header \"Authorization: Bearer " + bearer +"\" \"https://apigateway.serpro.gov.br/datavalid-basico/v1/99999999999999\"";
-			var div = document.getElementsByClassName('language-trialSpanDatavalid');
+			/*var div = document.getElementsByClassName('language-trialSpanDatavalid');
 			var divTrial = div[0];
-			divTrial.parentElement.style = 'display: none';
+			divTrial.parentElement.style = 'display: none';*/
 			var logoImg = document.getElementById("imgLogoApi");
 			logoImg.src = "https://raw.githubusercontent.com/devserpro/datavalid-basico/master/img/datavalid.png";
 			document.getElementById('trialSpanUrl').innerHTML = '';
