@@ -1,4 +1,4 @@
-# Datavalid - Pacote Biometria <span id="trialSpan"></span>
+# Datavalid - Pacote Básico <span id="trialSpan"></span>
 
 Solução de análise de informações que garante autenticidade e confiabilidade aos dados em tempo real.
 
