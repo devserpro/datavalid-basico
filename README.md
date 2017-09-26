@@ -2,7 +2,7 @@
 
 Solução de validação de informações que garante autenticidade e confiabilidade aos dados em tempo real.
 
-O DataValid  e disponibilizado pela plataforma APIGOV (Plataforma que contempla todas as API's disponibilizadas e comercializadas pelo SERPRO) e utiliza o protocolo Oauth2 - Client Credential Grant ([https://tools.ietf.org/html/rfc6749#section-4.4](https://tools.ietf.org/html/rfc6749#section-4.4)) para realizar a autenticação e autorização de acesso para consumo das API's contratadas, conforme figura abaixo:
+O DataValid é disponibilizado pela plataforma APIGOV (Plataforma que contempla todas as API's disponibilizadas e comercializadas pelo SERPRO) e utiliza o protocolo Oauth2 - Client Credential Grant ([https://tools.ietf.org/html/rfc6749#section-4.4](https://tools.ietf.org/html/rfc6749#section-4.4)) para realizar a autenticação e autorização de acesso para consumo das API's contratadas, conforme figura abaixo:
 
 <img title="Processo de autenticação e autorização APIS" src="https://raw.githubusercontent.com/devserpro/consulta-cpf/master/img/oauth.png" style="width=50%;" />
 
@@ -57,37 +57,38 @@ De posse do Token de Acesso, faça a requisição a um dos serviços do DataVali
 
 ```curlBearer
 curl -X POST --header "Accept: application/json" --header "Authorization: Bearer c66a7de41c96f7008a0c397dc588b6d7" -d "{
- {
-	"key": {
-		"cpf": "05137518743"
-	},
-	"answer": {
-		"nome": "Nome do Cidadão",
-		"sexo": "M",
-        "data_nascimento": "1977-10-02",
-        "situacao_cpf": "regular",
-        "nacionalidade": 1,
-		"filiacao": {
-			"nome_mae": "Nome da Mãe do Cidadão",
-			"nome_pai": "Nome do Pai do Cidadão"
-		},
-		"endereco": {
-			"logradouro": "AV PAU BRASIL",
-			"numero": "12",
-			"complemento": "APTO 1903A",
-			"cep": "71926000",
-			"bairro": "AGUAS CLARAS (SUL)",
-			"municipio": "BRASILIA",
-			"uf": "DF"
-		},
 
-		"documento": {
-			"numero": "6694845",
-			"orgao_expedidor": "DETRAN",
-			"uf_expedidor": "MG"
-		}
-	}
+{
+ "key": {
+   "cpf": "05137518743"
+ },
+ "answer": {
+   "nome": "Nome do Cidadão",
+   "sexo": "M",
+   "data_nascimento": "1977-10-02",
+   "situacao_cpf": "regular",
+   "nacionalidade": 1,
+   "filiacao": {
+     "nome_mae": "Nome da Mãe do Cidadão",
+     "nome_pai": "Nome do Pai do Cidadão"
+  },
+  "endereco": {
+     "logradouro": "AV PAU BRASIL",
+     "numero": "12",
+     "complemento": "APTO 1903A",
+     "cep": "71926000",
+     "bairro": "AGUAS CLARAS (SUL)",
+     "municipio": "BRASILIA",
+     "uf": "DF"
+  },
+  "documento": {
+     "numero": "6694845",
+     "orgao_expedidor": "DETRAN",
+     "uf_expedidor": "MG"
+  }
+ }
 }
+
 }" "https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf"
 ```
 
@@ -151,6 +152,6 @@ Exemplo de Resposta para Validação de Dados de PJ (Pessoa Jurídica):
         "codigo": true,
         "descricao": true,
         "descricao_similaridade": 1
-    },
+    }
 }
 ```
