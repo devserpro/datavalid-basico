@@ -1,8 +1,8 @@
 # Datavalid - Pacote Básico <span id="trialSpan"></span>
 
-Solução de análise de informações que garante autenticidade e confiabilidade aos dados em tempo real.
+Solução de validação de informações que garante autenticidade e confiabilidade aos dados em tempo real.
 
-A plataforma APIGOV (Plataforma que contempla todas as API's disponibilizadas e comercializadas pelo SERPRO) utiliza o protocolo Oauth2 - Client Credential Grant ([https://tools.ietf.org/html/rfc6749#section-4.4](https://tools.ietf.org/html/rfc6749#section-4.4)) para realizar a autenticação e autorização de acesso para consumo das API's contratadas, conforme figura abaixo:
+O DataValid  e disponibilizado pela plataforma APIGOV (Plataforma que contempla todas as API's disponibilizadas e comercializadas pelo SERPRO) e utiliza o protocolo Oauth2 - Client Credential Grant ([https://tools.ietf.org/html/rfc6749#section-4.4](https://tools.ietf.org/html/rfc6749#section-4.4)) para realizar a autenticação e autorização de acesso para consumo das API's contratadas, conforme figura abaixo:
 
 <img title="Processo de autenticação e autorização APIS" src="https://raw.githubusercontent.com/devserpro/consulta-cpf/master/img/oauth.png" style="width=50%;" />
 
@@ -53,34 +53,42 @@ Atentar que sempre que o token de acesso temporário expirar, o gateway vai reto
 
 ### 2 – Como realizar a consulta ao Datavalid
 
-De posse do Token de Acesso, faça uma requisição via POST ao gateway informando os parâmetros do Datavalid. Exemplo:
+De posse do Token de Acesso, faça a requisição a um dos serviços do DataValid. Exemplo:
 
 ```curlBearer
 curl -X POST --header "Accept: application/json" --header "Authorization: Bearer c66a7de41c96f7008a0c397dc588b6d7" -d "{
-  \"key\": \"string\",
-  \"answer\": {
-    \"nome\": \"string\",
-    \"sexo\": \"F\",
-    \"data_nascimento\": \"string\",
-    \"filiacao\": {
-      \"nome_mae\": \"string\",
-      \"nome_pai\": \"string\"
-    },
-    \"nacionalidade\": 1,
-    \"documento\": {
-      \"tipo\": 1,
-      \"numero\": \"string\",
-      \"orgao_expedidor\": \"string\",
-      \"uf_expedidor\": \"string\"
-    },
-    \"cnh\": {
-      \"numero_registro\": \"string\",
-      \"categoria\": \"string\",
-      \"data_primeira_habilitacao\": \"string\",
-      \"data_validade\": \"string\"
-    }
-  }
-}" "https://apigateway.serpro.gov.br/datavalid/vbeta1/"
+ {
+	"key": {
+		"cpf": "05137518743"
+	},
+	"answer": {
+		"nome": "Nome do Cidadão",
+		"sexo": "M",
+        "data_nascimento": "1977-10-02",
+        "situacao_cpf": "regular",
+        "nacionalidade": 1,
+		"filiacao": {
+			"nome_mae": "Nome da Mãe do Cidadão",
+			"nome_pai": "Nome do Pai do Cidadão"
+		},
+		"endereco": {
+			"logradouro": "AV PAU BRASIL",
+			"numero": "12",
+			"complemento": "APTO 1903A",
+			"cep": "71926000",
+			"bairro": "AGUAS CLARAS (SUL)",
+			"municipio": "BRASILIA",
+			"uf": "DF"
+		},
+
+		"documento": {
+			"numero": "6694845",
+			"orgao_expedidor": "DETRAN",
+			"uf_expedidor": "MG"
+		}
+	}
+}
+}" "https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf"
 ```
 
 No exemplo acima foram utilizados os seguintes parametros:
@@ -89,29 +97,60 @@ No exemplo acima foram utilizados os seguintes parametros:
 
 **[HEADER] Authorization: Bearer <span class="bearer">c66a7de41c96f7008a0c397dc588b6d7</span>** - Informamos o token de acesso recebido
 
-**[POST] https://apigateway.serpro.gov.br/datavalid<span id="trialSpanUrl"></span>/<span id="trialSpanVersao"></span>/**: chamamos a url do Datavalid passando os parâmetros para verificação de autenticidade no -d."
+**[POST] https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf<span id="trialSpanUrl"></span>/<span id="trialSpanVersao"></span>/**: chamamos a url do serviço de validaço de PF do Datavalid passando como argumento -d, o corpo da requisiço rest."
 
-Exemplo de Resposta para Validação de Dados Básico PF (Pessoa Física):
+Exemplo de Resposta para Validação de Dados de PF (Pessoa Física):
 
 ```json
 {
-  "nome": true,
-  "nome_similaridade": 1,
-  "sexo": true,
-  "data_nascimento": false,
-  "informacoes_adicionais": {
-    "cpf_regular": true
-  }
+    "nome": false,
+    "nome_similaridade": 0.1923076923076923,
+    "sexo": true,
+    "data_nascimento": false,
+    "situacao_cpf": true,
+    "filiacao": {
+        "nome_mae": false,
+        "nome_mae_similaridade": 0.27586206896551724,
+        "nome_pai": false,
+        "nome_pai_similaridade": 0.21739130434782605
+    },
+    "nacionalidade": true,
+    "endereco": {
+        "logradouro": false,
+        "logradouro_similaridade": 0.15384615384615385,
+        "numero": false,
+        "numero_similaridade": 0.16666666666666663,
+        "complemento": false,
+        "complemento_similaridade": 0.09999999999999998,
+        "bairro": false,
+        "bairro_similaridade": 0.16666666666666663,
+        "cep": false,
+        "municipio": false,
+        "municipio_similaridade": 0.15384615384615385,
+        "uf": false,
+        "uf_similaridade": 0
+    },
+    "documento": {
+        "numero": false,
+        "orgao_expedidor": false,
+        "uf_expedidor": true
+    }
 }
 ```
 
-Exemplo de Resposta para Validação de Dados Básico PJ (Pessoa Jurídica):
+Exemplo de Resposta para Validação de Dados de PJ (Pessoa Jurídica):
 
 ```json
 {
-  "razao_social": false,
-  "razao_social_similaridade": 0.5454545454545454,
-  "nome_fantasia": true,
-  "nome_fantasia_similaridade": 1
+    "razao_social": false,
+    "razao_social_similaridade": 0.96,
+    "nome_fantasia": true,
+    "nome_fantasia_similaridade": 1,
+    "data_abertura": true,
+    "cnae_principal": {
+        "codigo": true,
+        "descricao": true,
+        "descricao_similaridade": 1
+    },
 }
 ```
