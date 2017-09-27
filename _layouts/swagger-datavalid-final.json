@@ -462,7 +462,7 @@
       "properties": {
         "cpf": {
           "type": "string",
-          "example": "09194017670"
+          "example": "05137518743"
         }
       }
     },
