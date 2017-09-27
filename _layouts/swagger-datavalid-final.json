@@ -116,7 +116,8 @@
       "type": "object",
       "properties": {
         "cnpj": {
-          "type": "string"
+          "type": "string",
+          "example":"34238864000168"
         }
       }
     },
@@ -124,14 +125,17 @@
       "type": "object",
       "properties": {
         "razao_social": {
-          "type": "string"
+          "type": "string",
+          "example":"Nome da empresa"
         },
         "nome_fantasia": {
-          "type": "string"
+          "type": "string",
+           "example":"Nome Fantasia da Empresa"
         },
         "data_abertura": {
           "type": "string",
-          "format": "yyyy-mm-dd"
+          "format": "yyyy-mm-dd",
+           "example":"2000-01-01"
         },
         "cnae_principal": {
           "$ref": "#/definitions/AnswerPJProperty"
@@ -143,23 +147,28 @@
           "$ref": "#/definitions/AnswerPJEndereco"
         },
         "situacao_especial": {
-          "type": "string"
+          "type": "string",
+          "example":""
         },
         "situacao_cadastral": {
           "$ref": "#/definitions/AnswerPJSituacaoCadastral"
         },
         "nome_orgao": {
-          "type": "string"
+          "type": "string",
+           "example":"Nome do Orgão"
         },
         "ente_federativo": {
-          "type": "string"
+          "type": "string",
+           "example":"BR"
         },
         "correio_eletronico": {
-          "type": "string"
+          "type": "string",
+           "example":"empresa@dominio.com.br"
         },
         "capital_social": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "example":0
         },
         "porte": {
           "type": "string",
@@ -179,10 +188,12 @@
       "type": "object",
       "properties": {
         "codigo": {
-          "type": "string"
+          "type": "string",
+           "example":"01"
         },
         "descricao": {
-          "type": "string"
+          "type": "string",
+           "example":"descricao"
         }
       }
     },
@@ -191,7 +202,7 @@
       "properties": {
         "logradouro": {
           "type": "string",
-          "example": "Nome do Lograudoro"
+          "example": "Nome do Logradouro"
         },
         "numero": {
           "type": "string",
@@ -234,10 +245,12 @@
         },
         "data": {
           "type": "string",
-          "format": "yyyy-mm-dd"
+          "format": "yyyy-mm-dd",
+           "example":"2000-01-01"
         },
         "motivo": {
-          "type": "string"
+          "type": "string",
+           "example":"Descrição do motivo"
         }
       }
     },
@@ -245,10 +258,12 @@
       "type": "object",
       "properties": {
         "ddd": {
-          "type": "string"
+          "type": "string",
+           "example":"00"
         },
         "numero": {
-          "type": "string"
+          "type": "string",
+           "example":"00000000"
         }
       }
     },
@@ -468,7 +483,7 @@
         "data_nascimento": {
           "type": "string",
           "format": "yyyy-mm-dd",
-          "example": "10-10-2000"
+          "example": "2000-10-10"
         },
         "situacao_cpf": {
           "type": "string",
@@ -561,12 +576,12 @@
         "data_primeira_habilitacao": {
           "type": "string",
           "format": "yyyy-mm-dd",
-          "example": "10-10-2000"
+          "example": "2000-10-10"
         },
         "data_validade": {
           "type": "string",
           "format": "yyyy-mm-dd",
-          "example": "10-10-2000"
+          "example": "2000-10-10"
         }
       }
     },
