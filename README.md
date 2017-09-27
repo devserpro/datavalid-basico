@@ -56,40 +56,7 @@ Atentar que sempre que o token de acesso temporário expirar, o gateway vai reto
 De posse do Token de Acesso, faça a requisição a um dos serviços do DataValid. Exemplo:
 
 ```curlBearer
-curl -X POST --header "Accept: application/json" --header "Authorization: Bearer c66a7de41c96f7008a0c397dc588b6d7" -d "{
-
-{
- "key": {
-   "cpf": "05137518743"
- },
- "answer": {
-   "nome": "Nome do Cidadão",
-   "sexo": "M",
-   "data_nascimento": "1977-10-02",
-   "situacao_cpf": "regular",
-   "nacionalidade": 1,
-   "filiacao": {
-     "nome_mae": "Nome da Mãe do Cidadão",
-     "nome_pai": "Nome do Pai do Cidadão"
-  },
-  "endereco": {
-     "logradouro": "AV PAU BRASIL",
-     "numero": "12",
-     "complemento": "APTO 1903A",
-     "cep": "71926000",
-     "bairro": "AGUAS CLARAS (SUL)",
-     "municipio": "BRASILIA",
-     "uf": "DF"
-  },
-  "documento": {
-     "numero": "6694845",
-     "orgao_expedidor": "DETRAN",
-     "uf_expedidor": "MG"
-  }
- }
-}
-
-}" "https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf"
+curl -X POST "https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf" -H  "accept: application/json" -H  "Authorization: Bearer c66a7de41c96f7008a0c397dc588b6d7" -H  "content-type: application/json" -d "{  \"key\": {    \"cpf\": \"05137518743\"  },  \"answer\": {    \"nome\": \"João\",    \"sexo\": \"F\",    \"data_nascimento\": \"2000-10-10\",    \"situacao_cpf\": \"regular\",    \"filiacao\": {      \"nome_mae\": \"Mãe do João\",      \"nome_pai\": \"Pai do João\"    },    \"nacionalidade\": 1,    \"endereco\": {      \"logradouro\": \"Nome do Lograudoro\",      \"numero\": \"0007\",      \"complemento\": \"APTO 2015\",      \"bairro\": \"Nome do Bairro\",      \"cep\": \"0000001\",      \"municipio\": \"Nome do Municipio\",      \"uf\": \"DF\"    },    \"documento\": {      \"tipo\": 1,      \"numero\": \"000001\",      \"orgao_expedidor\": \"SSP\",      \"uf_expedidor\": \"MG\"    },    \"cnh\": {      \"numero_registro\": \"0000001\",      \"categoria\": \"AB\",      \"data_primeira_habilitacao\": \"2000-10-10\",      \"data_validade\": \"2000-10-10\"    }  }}"
 ```
 
 No exemplo acima foram utilizados os seguintes parametros:
