@@ -9,9 +9,9 @@
     },
   "swagger": "2.0",
   "info": {
-    "description": "O serviço `DataValid` é disponibilizado através do  `HTTP REST` oferecendo operações que permitem as aplicações realizar validações em dados de Pessoas Fisicas e Pessoas Juridicas.\n\n## Códigos de Retorno\n\n| Código de retorno | Resumido | Explicação |\n| ------------- |:--------------------|:-----------------------------------------------------------------------------|\n| 200           | OK                  | Tudo funcionou como esperado e a validação dos dados foi realizada com sucesso.                                               |\n| 400           | Requisição inválida | A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição. Confira se as propriedade do JSON da requisição estão de acordo com a propriedade esperadas pelos serviço. |\n| 401           | Não autorizado      | Problemas durante a autenticação. |\n| 422           | Validação não processada   | A validação não pode ser processada por alguma inconsistência na requisição.              |\n| 500           | Erro no servidor    | Ocorreu algum erro interno.      |\n| 503           |Serviço Indisponível     |  Algum serviço integrado ao DataValid está indisponível no momento.                         |\n\n\n\n \n\n## Tipos de Campos Retornados\n\n| Tipos de campos | Valor de retorno |\n| ---------------------- | :------------------------------------------------------------- |\n| campo de validação        | <code>false</code> se o dado for invalido e <code>true</code> se for válido                   |\n| campo de similaridade     | Valor de 0 a 1 que indica o percentual de similaridade entre dado a ser validado e o dado verdadeiro referente a chave enviada.|\n\n --------------------------",
+    "description": "O serviço `Datavalid` é disponibilizado através do  `HTTP REST` oferecendo operações que permitem as aplicações realizar validações em dados de Pessoas Fisicas e Pessoas Juridicas.\n\n## Códigos de Retorno\n\n| Código de retorno | Resumido | Explicação |\n| ------------- |:--------------------|:-----------------------------------------------------------------------------|\n| 200           | OK                  | Tudo funcionou como esperado e a validação dos dados foi realizada com sucesso.                                               |\n| 400           | Requisição inválida | A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição. Confira se as propriedade do JSON da requisição estão de acordo com a propriedade esperadas pelos serviço. |\n| 401           | Não autorizado      | Problemas durante a autenticação. |\n| 422           | Validação não processada   | A validação não pode ser processada por alguma inconsistência na requisição.              |\n| 500           | Erro no servidor    | Ocorreu algum erro interno.      |\n| 503           |Serviço Indisponível     |  Algum serviço integrado ao Datavalid está indisponível no momento.                         |\n\n\n\n \n\n## Tipos de Campos Retornados\n\n| Tipos de campos | Valor de retorno |\n| ---------------------- | :------------------------------------------------------------- |\n| campo de validação        | <code>false</code> se o dado for invalido e <code>true</code> se for válido                   |\n| campo de similaridade     | Valor de 0 a 1 que indica o percentual de similaridade entre dado a ser validado e o dado verdadeiro referente a chave enviada.|\n\n --------------------------",
     "version": "vbeta1",
-    "title": "Data Valid"
+    "title": "Datavalid Básico"
   },
   "tags": [
     {
@@ -21,9 +21,9 @@
   "schemes": [
     "https"
   ],
-  "basePath": "/datavalid",
+  "basePath": "/datavalid/basico/vbeta1",
   "paths": {
-    "/basico/vbeta1/validate/pf": {
+    "/validate/pf": {
       "post": {
         "tags": [
           "Plano Básico"
@@ -61,7 +61,7 @@
         }
       }
     },
-    "/basico/vbeta1/validate/pj": {
+    "/validate/pj": {
       "post": {
         "tags": [
           "Plano Básico"
@@ -366,7 +366,7 @@
         "logradouro": {
           "type": "boolean"
         },
-        "logradoura_similaridade": {
+        "logradouro_similaridade": {
           "description": "Percentual de similaridade",
           "type": "number",
           "format": "double"
