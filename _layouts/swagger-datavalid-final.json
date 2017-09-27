@@ -190,25 +190,32 @@
       "type": "object",
       "properties": {
         "logradouro": {
-          "type": "string"
+          "type": "string",
+          "example": "Nome do Lograudoro"
         },
         "numero": {
-          "type": "string"
+          "type": "string",
+          "example": "0007"
         },
         "complemento": {
-          "type": "string"
+          "type": "string",
+          "example": "APTO 2015"
         },
         "bairro": {
-          "type": "string"
+          "type": "string",
+          "example": "Nome do Bairro"
         },
         "cep": {
-          "type": "string"
+          "type": "string",
+          "example": "0000001"
         },
         "municipio": {
-          "type": "string"
+          "type": "string",
+          "example": "Nome do Municipio"
         },
         "uf": {
-          "type": "string"
+          "type": "string",
+          "example": "DF"
         }
       }
     },
@@ -439,7 +446,8 @@
       "type": "object",
       "properties": {
         "cpf": {
-          "type": "string"
+          "type": "string",
+          "example": "09194017670"
         }
       }
     },
@@ -447,7 +455,8 @@
       "type": "object",
       "properties": {
         "nome": {
-          "type": "string"
+          "type": "string",
+          "example": "João"
         },
         "sexo": {
           "type": "string",
@@ -458,7 +467,8 @@
         },
         "data_nascimento": {
           "type": "string",
-          "format": "yyyy-mm-dd"
+          "format": "yyyy-mm-dd",
+          "example": "10-10-2000"
         },
         "situacao_cpf": {
           "type": "string",
@@ -501,10 +511,12 @@
       "type": "object",
       "properties": {
         "nome_mae": {
-          "type": "string"
+          "type": "string",
+          "example": "Mãe do João"
         },
         "nome_pai": {
-          "type": "string"
+          "type": "string",
+          "example": "Pai do João"
         }
       }
     },
@@ -522,13 +534,16 @@
           ]
         },
         "numero": {
-          "type": "string"
+          "type": "string",
+          "example": "000001"
         },
         "orgao_expedidor": {
-          "type": "string"
+          "type": "string",
+          "example": "SSP"
         },
         "uf_expedidor": {
-          "type": "string"
+          "type": "string",
+          "example": "MG"
         }
       }
     },
@@ -536,18 +551,22 @@
       "type": "object",
       "properties": {
         "numero_registro": {
-          "type": "string"
+          "type": "string",
+          "example": "0000001"
         },
         "categoria": {
-          "type": "string"
+          "type": "string",
+          "example": "AB"
         },
         "data_primeira_habilitacao": {
           "type": "string",
-          "format": "yyyy-mm-dd"
+          "format": "yyyy-mm-dd",
+          "example": "10-10-2000"
         },
         "data_validade": {
           "type": "string",
-          "format": "yyyy-mm-dd"
+          "format": "yyyy-mm-dd",
+          "example": "10-10-2000"
         }
       }
     },
