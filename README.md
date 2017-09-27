@@ -65,7 +65,7 @@ No exemplo acima foram utilizados os seguintes parametros:
 
 **[HEADER] Authorization: Bearer <span class="bearer">c66a7de41c96f7008a0c397dc588b6d7</span>** - Informamos o token de acesso recebido
 
-**[POST] https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf<span id="trialSpanUrl"></span>/<span id="trialSpanVersao"></span>/**: chamamos a url do serviço de validaço de PF do Datavalid passando como argumento -d, o corpo da requisiço rest."
+**[POST] https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf**: chamamos a url do serviço de validação de PF do Datavalid passando como argumento -d, o corpo da requisiço REST."
 
 Exemplo de Resposta para Validação de Dados de PF (Pessoa Física):
 
@@ -119,6 +119,50 @@ Exemplo de Resposta para Validação de Dados de PJ (Pessoa Jurídica):
         "codigo": true,
         "descricao": true,
         "descricao_similaridade": 1
+    },
+    "natureza_juridica": {
+        "codigo": true,
+        "descricao": true,
+        "descricao_similaridade": 1
+    },
+    "endereco": {
+        "logradouro": false,
+        "logradouro_similaridade": 0.9130434782608696,
+        "numero": true,
+        "numero_similaridade": 1,
+        "complemento": false,
+        "complemento_similaridade": 0,
+        "bairro": true,
+        "bairro_similaridade": 1,
+        "cep": true,
+        "municipio": true,
+        "municipio_similaridade": 1,
+        "uf": true,
+        "uf_similaridade": 1
+    },
+    "situacao_cadastral": {
+        "codigo": true,
+        "data": true,
+        "motivo": false,
+        "motivo_similaridade": 0
+    },
+    "situacao_especial": true,
+    "situacao_especial_similaridade": 1,
+    "nome_orgao": true,
+    "nome_orgao_similaridade": 1,
+    "ente_federativo": true,
+    "ente_federativo_similaridade": 1,
+    "correio_eletronico": true,
+    "correio_eletronico_similaridade": 1,
+    "capital_social": true,
+    "porte": true,
+    "telefone": {
+        "ddd": true,
+        "numero": true
     }
 }
 ```
+Nos links abaixo disponibilizamos exemplos de requisição aos metodos do Datavalid, com todos os dados válidos:
+
+
+
