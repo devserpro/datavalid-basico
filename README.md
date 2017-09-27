@@ -67,7 +67,7 @@ No exemplo acima foram utilizados os seguintes parametros:
 
 **[POST] https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf**: chamamos a url do serviço de validação de PF do Datavalid passando como argumento -d, o corpo da requisiço REST."
 
-Exemplo de Resposta para Validação de Dados de PF (Pessoa Física):
+Exemplo de resposta para validação de dados de PF (Pessoa Física):
 
 ```json
 {
@@ -106,7 +106,7 @@ Exemplo de Resposta para Validação de Dados de PF (Pessoa Física):
 }
 ```
 
-Exemplo de Resposta para Validação de Dados de PJ (Pessoa Jurídica):
+Exemplo de resposta para validação de dados de PJ (Pessoa Jurídica):
 
 ```json
 {
@@ -162,7 +162,7 @@ Exemplo de Resposta para Validação de Dados de PJ (Pessoa Jurídica):
     }
 }
 ```
-Nos links abaixo disponibilizamos exemplos de requisição aos metodos do Datavalid, com todos os dados válidos:
+Nos links abaixo disponibilizamos exemplos de requisição aos metodos do Datavalid, com todos as informaçes válidos:
 
 
 
