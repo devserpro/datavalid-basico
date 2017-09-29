@@ -166,42 +166,43 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
 
 **Validaço de PF:**
 ```json
-{
- "key": {
-  "cpf": "81845995104"
- },
- "answer": {
-  "nome": "ADEMAR VEGA XIMENES",
-  "sexo": "M",
-        "data_nascimento": "1994-06-23",
-        "situacao_cpf":"cAncelada por obito sem EspOlio",
-  "filiacao": {
-   "nome_mae": "MARIA VEGA XIMENES",
-   "nome_pai": "JOÃO VEGA XIMENES"
-  },
-  "endereco": {
-   "logradouro": "Travessa Serrano",
-   "numero": "9754",
-   "complemento": "",
-   "cep": "12983406",
-   "bairro": "CENTRO",
-   "municipio": "Nova Iguaçu",
-   "uf": "AC"
-  },
-        "nacionalidade": 0,
-  "documento": {
-   "tipo": 1,
-   "numero": "6694845",
-   "orgao_expedidor": "DIC",
-   "uf_expedidor": "MA"
-  },
-  "cnh": {
-   "numero_registro": "98668270420",
-   "categoria": "A",
-   "data_primeira_habilitacao": "1980-11-28",
-   "data_validade": "2018-09-02"
-  }
- }
+
+{  
+   "key":{  
+      "cpf":"81845995104"
+   },
+   "answer":{  
+      "nome":"ADEMAR VEGA XIMENES",
+      "sexo":"M",
+      "data_nascimento":"1994-06-23",
+      "situacao_cpf":"cAncelada por obito sem EspOlio",
+      "filiacao":{  
+         "nome_mae":"MARIA VEGA XIMENES",
+         "nome_pai":"JOÃO VEGA XIMENES"
+      },
+      "endereco":{  
+         "logradouro":"Travessa Serrano",
+         "numero":"9754",
+         "complemento":"",
+         "cep":"12983406",
+         "bairro":"CENTRO",
+         "municipio":"Nova Iguaçu",
+         "uf":"AC"
+      },
+      "nacionalidade":0,
+      "documento":{  
+         "tipo":1,
+         "numero":"6694845",
+         "orgao_expedidor":"DIC",
+         "uf_expedidor":"MA"
+      },
+      "cnh":{  
+         "numero_registro":"98668270420",
+         "categoria":"A",
+         "data_primeira_habilitacao":"1980-11-28",
+         "data_validade":"2018-09-02"
+      }
+   }
 }
 
 ```
