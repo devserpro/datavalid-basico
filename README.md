@@ -164,7 +164,7 @@ Exemplo de resposta para validação de dados de PJ (Pessoa Jurídica):
 ```
 Abaixo disponibilizamos body's de requisições que podem ser utilizados na demonstração dos metodos do Datavalid. Esses body's possuem dados fictícios e podem ser usados para simular cenários nos quais o Datavalid valida positivamente todos os dados enviados.
 
-**Validaço de PF:**
+**Validação de PF (validate/pf) :**
 ```json
 
 {  
@@ -207,48 +207,50 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
 
 ```
 
+**Validação de PJ (validate/pj) :**
 ```json
 {
-	"key": {
-		"cpf": "97111686187"
-	},
-	"answer": {
-		"nome": "ADOLFO RIBEIRO GARCIA",
-		"sexo": "M",
-        "data_nascimento": "1994-05-26",
-        "situacao_cpf":"cAncelada por obito sem EspOlio",
-		"filiacao": {
-			"nome_mae": "MARIA RIBEIRO GARCIA",
-			"nome_pai": "JOÃO RIBEIRO GARCIA"
-		},
-		"endereco": {
-			"logradouro": "Travessa Serrano",
-			"numero": "9716",
-			"complemento": "",
-			"cep": "24368-911",
-			"bairro": "CENTRO",
-			"municipio": "Nova Iguaçu",
-			"uf": "BA"
-		},
-        "nacionalidade": 1,
-		"documento": {
-			"tipo": 1,
-			"numero": "6694845",
-			"orgao_expedidor": "DIC",
-			"uf_expedidor": "PE"
-		},
-		"cnh": {
-			"numero_registro": "91916018919",
-			"categoria": "B",
-			"data_primeira_habilitacao": "1985-11-22",
-			"data_validade": "2019-05-23"
-		}
-	}
+   "key":{
+      "cnpj":"34238864000168"
+   },
+   "answer":{
+      "razao_social":"SERVICO DE E-COMERCE LTDA",
+      "nome_fantasia":"E-COMERCE",
+      "data_abertura":"1967-06-30",
+      "cnae_principal":{
+         "codigo":"6204000",
+         "descricao":"Consultoria em e-comerce"
+      },
+      "natureza_juridica":{
+         "codigo":"2011",
+         "descricao":"Empresa Privada"
+      },
+      "endereco":{
+         "logradouro":"ST DE GRANDE AREA NORTE",
+         "numero":"Q.601",
+         "complemento":"LOTE V",
+         "cep":"70836900",
+         "bairro":"ASA NORTE",
+         "municipio":"BRASILIA",
+         "uf":"DF"
+      },
+      "situacao_especial":"",
+      "situacao_cadastral":{
+         "codigo":2,
+         "data":"2004-05-22",
+         "motivo":""
+      },
+      "nome_orgao":"BRASILIA",
+      "ente_federativo":"BR",
+      "correio_eletronico":"",
+      "capital_social":0,
+      "porte":"05",
+      "telefone":{
+         "ddd":"61",
+         "numero":"4338456"
+      }
+   }
 }
 ```
 
-**Validaço de PJ:**
-```json
-echo "djaR21PGoYp1iyK2n2ACOH9REdUb:ObRsAJWOL4fv2Tp27D1vd8fB3Ote" | base64
-```
 
