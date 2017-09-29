@@ -202,7 +202,8 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
 			"data_validade": "2018-09-02"
 		}
 	}
-}```
+}
+```
 
 ```json
 {
