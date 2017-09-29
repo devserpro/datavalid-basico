@@ -162,7 +162,90 @@ Exemplo de resposta para validação de dados de PJ (Pessoa Jurídica):
     }
 }
 ```
-Nos links abaixo disponibilizamos exemplos de requisição aos metodos do Datavalid, com todos as informaçes válidos:
+Abaixo disponibilizamos body's de requisições que podem ser utilizados na demonstração dos metodos do Datavalid. Esses body's possuem dados fictícios e podem ser usados para simular cenários nos quais o Datavalid valida positivamente todos os dados enviados.
 
+**Validaço de PF:**
+```json
+{
+	"key": {
+		"cpf": "81845995104"
+	},
+	"answer": {
+		"nome": "ADEMAR VEGA XIMENES",
+		"sexo": "M",
+        "data_nascimento": "1994-06-23",
+        "situacao_cpf":"cAncelada por obito sem EspOlio",
+		"filiacao": {
+			"nome_mae": "MARIA VEGA XIMENES",
+			"nome_pai": "JOÃO VEGA XIMENES"
+		},
+		"endereco": {
+			"logradouro": "Travessa Serrano",
+			"numero": "9754",
+			"complemento": "",
+			"cep": "12983406",
+			"bairro": "CENTRO",
+			"municipio": "Nova Iguaçu",
+			"uf": "AC"
+		},
+        "nacionalidade": 0,
+		"documento": {
+			"tipo": 1,
+			"numero": "6694845",
+			"orgao_expedidor": "DIC",
+			"uf_expedidor": "MA"
+		},
+		"cnh": {
+			"numero_registro": "98668270420",
+			"categoria": "A",
+			"data_primeira_habilitacao": "1980-11-28",
+			"data_validade": "2018-09-02"
+		}
+	}
+}```
 
+```json
+{
+	"key": {
+		"cpf": "97111686187"
+	},
+	"answer": {
+		"nome": "ADOLFO RIBEIRO GARCIA",
+		"sexo": "M",
+        "data_nascimento": "1994-05-26",
+        "situacao_cpf":"cAncelada por obito sem EspOlio",
+		"filiacao": {
+			"nome_mae": "MARIA RIBEIRO GARCIA",
+			"nome_pai": "JOÃO RIBEIRO GARCIA"
+		},
+		"endereco": {
+			"logradouro": "Travessa Serrano",
+			"numero": "9716",
+			"complemento": "",
+			"cep": "24368-911",
+			"bairro": "CENTRO",
+			"municipio": "Nova Iguaçu",
+			"uf": "BA"
+		},
+        "nacionalidade": 1,
+		"documento": {
+			"tipo": 1,
+			"numero": "6694845",
+			"orgao_expedidor": "DIC",
+			"uf_expedidor": "PE"
+		},
+		"cnh": {
+			"numero_registro": "91916018919",
+			"categoria": "B",
+			"data_primeira_habilitacao": "1985-11-22",
+			"data_validade": "2019-05-23"
+		}
+	}
+}
+```
+
+**Validaço de PJ:**
+```json
+echo "djaR21PGoYp1iyK2n2ACOH9REdUb:ObRsAJWOL4fv2Tp27D1vd8fB3Ote" | base64
+```
 
