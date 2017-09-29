@@ -175,7 +175,7 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
       "nome":"ADEMAR VEGA XIMENES",
       "sexo":"M",
       "data_nascimento":"1994-06-23",
-      "situacao_cpf":"cAncelada por obito sem EspOlio",
+      "situacao_cpf":"REGULAR",
       "filiacao":{  
          "nome_mae":"MARIA VEGA XIMENES",
          "nome_pai":"JOÃO VEGA XIMENES"
