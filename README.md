@@ -184,12 +184,12 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
          "logradouro":"Travessa Serrano",
          "numero":"9754",
          "complemento":"",
-         "cep":"12983406",
+         "cep":"12983-406",
          "bairro":"CENTRO",
          "municipio":"Nova Iguaçu",
          "uf":"AC"
       },
-      "nacionalidade":0,
+      "nacionalidade":1,
       "documento":{  
          "tipo":1,
          "numero":"6694845",
