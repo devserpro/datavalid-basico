@@ -65,7 +65,7 @@ No exemplo acima foram utilizados os seguintes parametros:
 
 **[HEADER] Authorization: Bearer <span class="bearer">c66a7de41c96f7008a0c397dc588b6d7</span>** - Informamos o token de acesso recebido
 
-**[POST] https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf**: chamamos a url do serviço de validação de PF do Datavalid passando como argumento -d, o corpo da requisiço REST."
+**[POST] https://apigateway.serpro.gov.br/datavalid-trial/basico/vbeta1/validate/pf**: chamamos a url do serviço de validação de PF do Datavalid passando como argumento -d, o corpo da requisiço REST."
 
 Exemplo de resposta para validação de dados de PF (Pessoa Física):
 
