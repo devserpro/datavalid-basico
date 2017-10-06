@@ -21,7 +21,7 @@
   "schemes": [
     "https"
   ],
-  "basePath": "/datavalid/basico/vbeta1",
+  "basePath": "/datavalid-trial/basico/vbeta1",
   "paths": {
     "/validate/pf": {
       "post": {
