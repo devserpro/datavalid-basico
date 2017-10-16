@@ -267,8 +267,9 @@
 		eventLabel: "Id: " + idReq + " | Ambiente: " + amb
 	});
 	var urlSwagger;
+	//Todos ambientes estão apontando para o trial. Não entendi por que precisaria apontar para procução
 	if (amb == 1) {
-		urlSwagger = "https://rawgit.com/devserpro/datavalid-basico/master/_layouts/swagger-datavalid-final.json";
+		urlSwagger = "https://cdn.rawgit.com/devserpro/datavalid-basico/master/_layouts/swagger-datavalid-trial2.json";
 	} else if (amb == 2) {
 		urlSwagger = "https://cdn.rawgit.com/devserpro/datavalid-basico/master/_layouts/swagger-datavalid-trial2.json";
 	}
