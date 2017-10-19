@@ -106,6 +106,8 @@ Exemplo de resposta para validação de dados de PF (Pessoa Física):
 }
 ```
 
+
+
 Exemplo de resposta para validação de dados de PJ (Pessoa Jurídica):
 
 ```json
@@ -207,6 +209,15 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
 
 ```
 
+Para facilitar a simulaço de diversos cenários de validação de Pessoas Fisicas, disponibilizamos abaixo
+dados falsos de Pessoas Fisicas que podem ser utilizados nesse ambiente de demonstração. 
+
+([Link para Github](https://github.com/devserpro/datavalid-basico/blob/master/_layouts/DadosPessoasFisicas.csv))
+
+([Download direto do arquivo](https://rawgit.com/devserpro/datavalid-basico/master/_layouts/DadosPessoasFisicas.csv)) 
+
+
+
 **Validação de PJ (validate/pj) :**
 ```json
 {
@@ -253,12 +264,4 @@ Abaixo disponibilizamos body's de requisições que podem ser utilizados na demo
 }
 ```
 
-**Conjunto de dados falsos de Pessoas Fisicas** 
-
-Para facilitar a simulaço de diversos cenários de validação de Pessoas Fisicas, disponibilizamos abaixo
-dados falsos de Pessoas Fisicas que podem ser utilizados nesse ambiente de demonstração. 
-
-([Link para Github](https://github.com/devserpro/datavalid-basico/blob/master/_layouts/DadosPessoasFisicas.csv))
-
-([Download direto do arquivo](https://rawgit.com/devserpro/datavalid-basico/master/_layouts/DadosPessoasFisicas.csv)) 
 
