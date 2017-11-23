@@ -56,7 +56,7 @@ Atentar que sempre que o token de acesso temporário expirar, o gateway vai reto
 De posse do Token de Acesso, faça a requisição a um dos serviços do DataValid. Exemplo:
 
 ```curlBearer
-curl -X POST "https://apigateway.serpro.gov.br/datavalid-trial/basico/vbeta1/validate/pf" -H  "accept: application/json" -H  "Authorization: Bearer c66a7de41c96f7008a0c397dc588b6d7" -H  "content-type: application/json" -d "{  \"key\": {    \"cpf\": \"05137518743\"  },  \"answer\": {    \"nome\": \"João\",    \"sexo\": \"F\",    \"data_nascimento\": \"2000-10-10\",    \"situacao_cpf\": \"regular\",    \"filiacao\": {      \"nome_mae\": \"Mãe do João\",      \"nome_pai\": \"Pai do João\"    },    \"nacionalidade\": 1,    \"endereco\": {      \"logradouro\": \"Nome do Lograudoro\",      \"numero\": \"0007\",      \"complemento\": \"APTO 2015\",      \"bairro\": \"Nome do Bairro\",      \"cep\": \"0000001\",      \"municipio\": \"Nome do Municipio\",      \"uf\": \"DF\"    },    \"documento\": {      \"tipo\": 1,      \"numero\": \"000001\",      \"orgao_expedidor\": \"SSP\",      \"uf_expedidor\": \"MG\"    },    \"cnh\": {      \"numero_registro\": \"0000001\",      \"categoria\": \"AB\",      \"data_primeira_habilitacao\": \"2000-10-10\",      \"data_validade\": \"2000-10-10\"    }  }}"
+curl -X POST "https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf" -H  "accept: application/json" -H  "Authorization: Bearer c66a7de41c96f7008a0c397dc588b6d7" -H  "content-type: application/json" -d "{  \"key\": {    \"cpf\": \"05137518743\"  },  \"answer\": {    \"nome\": \"João\",    \"sexo\": \"F\",    \"data_nascimento\": \"2000-10-10\",    \"situacao_cpf\": \"regular\",    \"filiacao\": {      \"nome_mae\": \"Mãe do João\",      \"nome_pai\": \"Pai do João\"    },    \"nacionalidade\": 1,    \"endereco\": {      \"logradouro\": \"Nome do Lograudoro\",      \"numero\": \"0007\",      \"complemento\": \"APTO 2015\",      \"bairro\": \"Nome do Bairro\",      \"cep\": \"0000001\",      \"municipio\": \"Nome do Municipio\",      \"uf\": \"DF\"    },    \"documento\": {      \"tipo\": 1,      \"numero\": \"000001\",      \"orgao_expedidor\": \"SSP\",      \"uf_expedidor\": \"MG\"    },    \"cnh\": {      \"numero_registro\": \"0000001\",      \"categoria\": \"AB\",      \"data_primeira_habilitacao\": \"2000-10-10\",      \"data_validade\": \"2000-10-10\"    }  }}"
 ```
 
 No exemplo acima foram utilizados os seguintes parametros:
@@ -65,7 +65,7 @@ No exemplo acima foram utilizados os seguintes parametros:
 
 **[HEADER] Authorization: Bearer <span class="bearer">c66a7de41c96f7008a0c397dc588b6d7</span>** - Informamos o token de acesso recebido
 
-**[POST] https://apigateway.serpro.gov.br/datavalid-trial/basico/vbeta1/validate/pf**: chamamos a url do serviço de validação de PF do Datavalid passando como argumento -d, o corpo da requisiço REST."
+**[POST] https://apigateway.serpro.gov.br/datavalid/basico/vbeta1/validate/pf**: chamamos a url do serviço de validação de PF do Datavalid passando como argumento -d, o corpo da requisiço REST."
 
 Exemplo de resposta para validação de dados de PF (Pessoa Física):
 
